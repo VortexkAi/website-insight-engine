@@ -4,12 +4,18 @@ import { z } from "zod";
 
 import { ArrowLink, Label, PageHero, Section } from "@/components/site/primitives";
 import {
+  ELLIOT_EMAIL,
+  ELLIOT_INSTAGRAM_HANDLE,
+  ELLIOT_INSTAGRAM_URL,
+  ELLIOT_PHONE,
   EMAIL,
-  INSTAGRAM_URL,
   MAILTO,
-  PRINCE_PHONE,
-  WHATSAPP_PRINCE,
+  VORTEXKAI_EMAIL,
+  VORTEXKAI_INSTAGRAM_HANDLE,
+  VORTEXKAI_INSTAGRAM_URL,
+  WHATSAPP_URL,
   X_URL,
+  mailtoFor,
   waLink,
 } from "@/lib/contact";
 
@@ -20,7 +26,7 @@ export const Route = createFileRoute("/enquiries")({
       {
         name: "description",
         content:
-          "Tell AevyronWeb what you're building. Send a project enquiry, or reach Prince directly on WhatsApp, email or Instagram.",
+          "Tell AevyronWeb what you're building. Send a project enquiry, or reach the studio directly on WhatsApp, email or Instagram.",
       },
       { property: "og:title", content: "Start a Project — AevyronWeb Enquiries" },
       {
@@ -128,7 +134,7 @@ function EnquiriesPage() {
       .filter(Boolean)
       .join("\n");
 
-    window.open(waLink(PRINCE_PHONE, summary), "_blank", "noopener,noreferrer");
+    window.open(waLink(ELLIOT_PHONE, summary), "_blank", "noopener,noreferrer");
     setSent(true);
   };
 
@@ -155,7 +161,7 @@ function EnquiriesPage() {
                 Your enquiry has been received. We'll review the information and get back to you.
               </p>
               <div className="mt-10 flex flex-wrap gap-3">
-                <ArrowLink href={WHATSAPP_PRINCE}>WhatsApp Prince</ArrowLink>
+                <ArrowLink href={WHATSAPP_URL}>WhatsApp the studio</ArrowLink>
                 <button
                   type="button"
                   onClick={() => setSent(false)}
@@ -259,7 +265,7 @@ function EnquiriesPage() {
                   Send enquiry <span>↗</span>
                 </button>
                 <p className="mt-4 text-xs text-muted-foreground">
-                  Sending opens WhatsApp with your enquiry summary addressed to Prince.
+                  Sending opens WhatsApp with your enquiry summary, ready to send to the studio.
                 </p>
               </div>
             </form>
@@ -269,11 +275,13 @@ function EnquiriesPage() {
             <Label>Direct contact</Label>
             <div className="mt-8 border-t border-border py-6">
               <p className="font-display text-3xl">WhatsApp</p>
-              <p className="mt-2 text-sm text-muted-foreground">Prince — Founder / Creator</p>
-              <p className="mt-1 text-sm text-muted-foreground">{PRINCE_PHONE}</p>
-              <p className="mt-2 text-xs text-bronze uppercase tracking-[0.18em]">Primary enquiry channel</p>
+              <p className="mt-2 text-sm text-muted-foreground">TheRealElliot</p>
+              <p className="mt-1 text-sm text-muted-foreground">{ELLIOT_PHONE}</p>
+              <p className="mt-2 text-xs tracking-[0.18em] text-bronze uppercase">
+                Primary enquiry channel
+              </p>
               <div className="mt-6">
-                <ArrowLink href={WHATSAPP_PRINCE}>WhatsApp Prince</ArrowLink>
+                <ArrowLink href={WHATSAPP_URL}>WhatsApp the studio</ArrowLink>
               </div>
             </div>
             <div className="border-t border-border py-6">
@@ -289,11 +297,44 @@ function EnquiriesPage() {
               </div>
             </div>
             <div className="border-t border-border py-6">
-              <p className="font-display text-3xl">Instagram</p>
-              <p className="mt-2 text-sm text-muted-foreground">@aevyronweb — for quick enquiries, DM us.</p>
-              <div className="mt-6">
-                <ArrowLink href={INSTAGRAM_URL}>Instagram</ArrowLink>
-              </div>
+              <p className="font-display text-3xl">TheRealElliot</p>
+              <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                <li>
+                  <a href={mailtoFor(ELLIOT_EMAIL)} className="link-underline hover:text-foreground">
+                    {ELLIOT_EMAIL}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={ELLIOT_INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline hover:text-foreground"
+                  >
+                    Instagram — @{ELLIOT_INSTAGRAM_HANDLE}
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div className="border-t border-border py-6">
+              <p className="font-display text-3xl">VortexkAi</p>
+              <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                <li>
+                  <a href={mailtoFor(VORTEXKAI_EMAIL)} className="link-underline hover:text-foreground">
+                    {VORTEXKAI_EMAIL}
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={VORTEXKAI_INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline hover:text-foreground"
+                  >
+                    Instagram — @{VORTEXKAI_INSTAGRAM_HANDLE}
+                  </a>
+                </li>
+              </ul>
             </div>
             <div className="border-t border-border py-6">
               <p className="font-display text-3xl">X</p>

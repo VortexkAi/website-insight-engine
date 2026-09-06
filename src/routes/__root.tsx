@@ -101,9 +101,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           name: "AevyronWeb",
           description:
             "AevyronWeb builds custom websites, web applications, e-commerce experiences and digital products.",
-          email: "aeyronweb@gmail.com",
-          telephone: "+91 97797 92852",
-          sameAs: ["https://instagram.com/aevyronweb", "https://x.com/aevyronweb"],
+          email: "aevyronweb@gmail.com",
+          telephone: "+917706036226",
+          sameAs: [
+            "https://x.com/aevyronweb",
+            "https://instagram.com/_the.real.elliot",
+            "https://instagram.com/vortexkai_",
+          ],
         }),
       },
     ],

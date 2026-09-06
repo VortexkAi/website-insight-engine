@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Nav } from "@/components/site/Nav";
+import { PageTransition } from "@/components/site/PageTransition";
 import { Footer } from "@/components/site/Footer";
 
 function NotFoundComponent() {
@@ -140,8 +141,10 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <Nav />
       <main>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <PageTransition>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </PageTransition>
       </main>
       <Footer />
     </QueryClientProvider>

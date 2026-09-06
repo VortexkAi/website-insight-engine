@@ -61,15 +61,54 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href={WHATSAPP_PRINCE} target="_blank" rel="noopener noreferrer" className="link-underline hover:text-foreground">
-                  WhatsApp — {PRINCE_PHONE}
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline hover:text-foreground"
+                >
+                  WhatsApp — {ELLIOT_PHONE}
                 </a>
               </li>
-              <li>
-                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="link-underline hover:text-foreground">
-                  Instagram — @aevyronweb
+              <li className="pt-4">
+                <p className="text-[0.68rem] tracking-[0.22em] text-foreground uppercase">
+                  TheRealElliot
+                </p>
+                <a
+                  href={mailtoFor(ELLIOT_EMAIL)}
+                  className="link-underline mt-2 block hover:text-foreground"
+                >
+                  {ELLIOT_EMAIL}
+                </a>
+                <a
+                  href={ELLIOT_INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline mt-1 block hover:text-foreground"
+                >
+                  Instagram — @{ELLIOT_INSTAGRAM_HANDLE}
                 </a>
               </li>
+              <li className="pt-4">
+                <p className="text-[0.68rem] tracking-[0.22em] text-foreground uppercase">
+                  VortexkAi
+                </p>
+                <a
+                  href={mailtoFor(VORTEXKAI_EMAIL)}
+                  className="link-underline mt-2 block hover:text-foreground"
+                >
+                  {VORTEXKAI_EMAIL}
+                </a>
+                <a
+                  href={VORTEXKAI_INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="link-underline mt-1 block hover:text-foreground"
+                >
+                  Instagram — @{VORTEXKAI_INSTAGRAM_HANDLE}
+                </a>
+              </li>
+              <li className="pt-4"></li>
               <li>
                 <a href={X_URL} target="_blank" rel="noopener noreferrer" className="link-underline hover:text-foreground">
                   X — @aevyronweb

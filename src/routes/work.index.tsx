@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 
+import { Reveal } from "@/components/motion/Reveal";
+import { Tilt } from "@/components/motion/Tilt";
 import { ArrowLink, PageHero, Section } from "@/components/site/primitives";
 import { projects, workFilters } from "@/lib/work";
 import { cn } from "@/lib/utils";
@@ -70,42 +72,43 @@ function WorkPage() {
         ) : (
           <div className="grid gap-20">
             {list.map((p, i) => (
-              <Link
-                key={p.slug}
-                to="/work/$slug"
-                params={{ slug: p.slug }}
-                className={cn(
-                  "group grid gap-8 border-t border-border pt-10 md:grid-cols-2 md:items-center md:gap-16",
-                  i % 2 === 1 && "md:[&>div:first-child]:order-2",
-                )}
-              >
-                <div className="img-zoom">
-                  <img
-                    src={p.image}
-                    alt={`${p.title} — ${p.category}`}
-                    loading="lazy"
-                    width={1408}
-                    height={1008}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div>
-                  <p className="label-xs">
-                    {p.category} — {p.status}
-                  </p>
-                  <h2 className="mt-5 font-display text-4xl transition-transform duration-500 group-hover:translate-x-1 md:text-6xl">
-                    {p.title}
-                  </h2>
-                  <p className="mt-6 max-w-md text-sm text-muted-foreground">{p.summary}</p>
-                  <p className="mt-6 text-[0.68rem] tracking-[0.18em] text-muted-foreground uppercase">
-                    {p.tech.join(" · ")}
-                  </p>
-                  <span className="mt-8 inline-flex items-center gap-2 text-[0.72rem] tracking-[0.2em] uppercase">
-                    View project
-                    <span className="transition-transform group-hover:translate-x-1">↗</span>
-                  </span>
-                </div>
-              </Link>
+              <Reveal key={p.slug} delay={0.04}>
+                <Link
+                  to="/work/$slug"
+                  params={{ slug: p.slug }}
+                  className={cn(
+                    "group grid gap-8 border-t border-border pt-10 md:grid-cols-2 md:items-center md:gap-16",
+                    i % 2 === 1 && "md:[&>div:first-child]:order-2",
+                  )}
+                >
+                  <Tilt className="img-zoom sheen" strength={5}>
+                    <img
+                      src={p.image}
+                      alt={`${p.title} — ${p.category}`}
+                      loading="lazy"
+                      width={1408}
+                      height={1008}
+                      className="h-full w-full object-cover"
+                    />
+                  </Tilt>
+                  <div>
+                    <p className="label-xs">
+                      {p.category} — {p.status}
+                    </p>
+                    <h2 className="mt-5 font-display text-4xl transition-transform duration-500 group-hover:translate-x-1 md:text-6xl">
+                      {p.title}
+                    </h2>
+                    <p className="mt-6 max-w-md text-sm text-muted-foreground">{p.summary}</p>
+                    <p className="mt-6 text-[0.68rem] tracking-[0.18em] text-muted-foreground uppercase">
+                      {p.tech.join(" · ")}
+                    </p>
+                    <span className="mt-8 inline-flex items-center gap-2 text-[0.72rem] tracking-[0.2em] uppercase">
+                      View project
+                      <span className="transition-transform group-hover:translate-x-1">↗</span>
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
             ))}
           </div>
         )}

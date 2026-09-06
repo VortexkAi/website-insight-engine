@@ -1,6 +1,19 @@
 import { Link } from "@tanstack/react-router";
 
-import { EMAIL, INSTAGRAM_URL, MAILTO, PRINCE_PHONE, WHATSAPP_PRINCE, X_URL } from "@/lib/contact";
+import {
+  ELLIOT_EMAIL,
+  ELLIOT_INSTAGRAM_HANDLE,
+  ELLIOT_INSTAGRAM_URL,
+  ELLIOT_PHONE,
+  EMAIL,
+  MAILTO,
+  VORTEXKAI_EMAIL,
+  VORTEXKAI_INSTAGRAM_HANDLE,
+  VORTEXKAI_INSTAGRAM_URL,
+  WHATSAPP_URL,
+  X_URL,
+  mailtoFor,
+} from "@/lib/contact";
 
 const nav = [
   { label: "Home", to: "/" },

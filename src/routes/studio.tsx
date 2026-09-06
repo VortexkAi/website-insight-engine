@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { ArrowLink, Label, PageHero, Section } from "@/components/site/primitives";
-import { ELLIOT_PHONE, PRINCE_PHONE, TRAXX_PHONE, waLink } from "@/lib/contact";
+import { mailtoFor, people } from "@/lib/contact";
 
 export const Route = createFileRoute("/studio")({
   head: () => ({
@@ -33,38 +33,6 @@ const process = [
   ["06", "Client Review", "Receive consolidated feedback."],
   ["07", "Deployment", "Deploy to the client's infrastructure."],
   ["08", "Handover", "Transfer agreed files, access and documentation."],
-];
-
-const team = [
-  {
-    name: "PRINCE",
-    role: "Founder / Creator",
-    phone: PRINCE_PHONE,
-    duties: [
-      "Business direction",
-      "Client communication",
-      "Project enquiries",
-      "Creative direction",
-      "Company coordination",
-    ],
-  },
-  {
-    name: "TRAXX",
-    role: "Developer / Assistant",
-    phone: TRAXX_PHONE,
-    duties: ["Development", "Technical assistance", "Project support", "Team coordination"],
-  },
-  {
-    name: "THEREALELLIOT",
-    role: "Developer / Organizer",
-    phone: ELLIOT_PHONE,
-    duties: [
-      "Development",
-      "Technical implementation",
-      "Project organization",
-      "Technical coordination",
-    ],
-  },
 ];
 
 const stack = [
@@ -138,28 +106,43 @@ function StudioPage() {
       <Section className="py-24 md:py-32">
         <Label>Team</Label>
         <div className="mt-14">
-          {team.map((m) => (
+          {people.map((m) => (
             <div key={m.name} className="group border-t border-border py-10 md:py-14">
               <div className="flex flex-wrap items-baseline justify-between gap-4">
                 <h3 className="font-display text-[2.5rem] leading-none md:text-[6rem]">{m.name}</h3>
                 <p className="text-[0.7rem] tracking-[0.2em] text-muted-foreground uppercase">
-                  {m.role}
+                  @{m.instagramHandle}
                 </p>
               </div>
               <div className="mt-6 grid gap-6 opacity-70 transition-opacity duration-500 group-hover:opacity-100 md:grid-cols-[1.4fr_1fr]">
                 <ul className="flex flex-wrap gap-x-8 gap-y-2 text-sm text-muted-foreground">
-                  {m.duties.map((d) => (
+                  {m.focus.map((d) => (
                     <li key={d}>{d}</li>
                   ))}
                 </ul>
-                <a
-                  href={waLink(m.phone)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underline text-sm text-muted-foreground hover:text-foreground md:text-right"
-                >
-                  {m.phone}
-                </a>
+                <div className="flex flex-col gap-2 text-sm text-muted-foreground md:text-right">
+                  <a href={mailtoFor(m.email)} className="link-underline hover:text-foreground">
+                    {m.email}
+                  </a>
+                  <a
+                    href={m.instagramUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline hover:text-foreground"
+                  >
+                    Instagram
+                  </a>
+                  {m.whatsapp ? (
+                    <a
+                      href={m.whatsapp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-underline hover:text-foreground"
+                    >
+                      WhatsApp — {m.phone}
+                    </a>
+                  ) : null}
+                </div>
               </div>
             </div>
           ))}
